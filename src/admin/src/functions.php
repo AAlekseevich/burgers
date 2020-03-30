@@ -47,7 +47,7 @@ function main() {
 
     echo '<br><br>';
     } else {
-        echo 'Список пользователей пуст';
+        echo 'Список пользователей пуст <br><br>';
     }
 
     $orders = getOrders();
