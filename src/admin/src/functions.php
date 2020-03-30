@@ -30,6 +30,8 @@ function main() {
     connect();
 
     $users = getUsers();
+
+    if ($users) {
     echo '<table border="1">';
     echo '<th>ID</th><th>Name</th><th>Phone</th><th>Email</th>';
     foreach ($users as $user) {
@@ -44,20 +46,27 @@ function main() {
     echo '</table>';
 
     echo '<br><br>';
+    } else {
+        echo 'Список пользователей пуст';
+    }
 
     $orders = getOrders();
-    echo '<table border="1">';
-    echo '<th>ID</th><th>User ID</th><th>Street</th><th>Home</th><th>Apartment</th><th>Part</th><th>Floor</th><th>Comment</th><th>Change pay</th><th>Pay card</th><th>Callback</th>';
-    foreach ($orders as $order) {
-        echo '<tr>';
-        foreach ($order as $key => $value) {
-            if ($key != 'date') {
-                echo '<td style="padding: 10px 10px">' . $value . '</td>';
+    if ($orders) {
+        echo '<table border="1">';
+        echo '<th>ID</th><th>User ID</th><th>Street</th><th>Home</th><th>Apartment</th><th>Part</th><th>Floor</th><th>Comment</th><th>Change pay</th><th>Pay card</th><th>Callback</th>';
+        foreach ($orders as $order) {
+            echo '<tr>';
+            foreach ($order as $key => $value) {
+                if ($key != 'date') {
+                    echo '<td style="padding: 10px 10px">' . $value . '</td>';
+                }
             }
+            echo '</tr>';
         }
-        echo '</tr>';
+        echo '</table>';
+    } else {
+        echo 'Список заказов пуст';
     }
-    echo '</table>';
 }
 
 main();
